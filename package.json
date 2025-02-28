@@ -1,0 +1,29 @@
+{
+  "name": "hb2504",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "node esbuild.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/colincrippen/hb2504.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/colincrippen/hb2504/issues"
+  },
+  "homepage": "https://github.com/colincrippen/hb2504#readme",
+  "devDependencies": {
+    "@types/webextension-polyfill": "^0.12.2",
+    "esbuild": "^0.25.0",
+    "typescript": "^5.7.3"
+  },
+  "dependencies": {
+    "webextension-polyfill": "^0.12.0"
+  }
+}
