@@ -2,19 +2,13 @@ import browser from "webextension-polyfill";
 
 console.log("Content script loaded!");
 
-// document.body.style.border = "5px solid red";  
+const findProfessorsFromPlan = (): void => {
+  const instructorCells = document.querySelectorAll("td[data-property='instructor']");
 
-// Define the expected response type
-interface BackgroundResponse {
-  response: string;
-}
-
-// Send message and type the response
-browser.runtime.sendMessage({ message: "Hello from content script!" })
-  .then((response) => {
-    const typedResponse = response as BackgroundResponse | undefined;  // Type assertion
-    console.log("Response from background:", typedResponse?.response);
-  })
-  .catch(error => {
-    console.error("Error sending message:", error);
+  instructorCells.forEach(cell => {
+    const nameLink = cell.querySelector("a.email");
+    console.log(nameLink?.textContent);
   });
+};
+
+findProfessorsFromPlan();
