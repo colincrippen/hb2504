@@ -1,7 +1,7 @@
 {
-  "name": "hb2504",
-  "version": "1.0.0",
-  "description": "",
+  "name": "hb2504-helper",
+  "version": "0.1.0",
+  "description": "An browser extension that provides HB 2504 information when planning/registering for classes at Texas State.",
   "main": "index.js",
   "scripts": {
     "build": "node esbuild.js",

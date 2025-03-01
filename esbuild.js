@@ -1,28 +1,18 @@
 const esbuild = require("esbuild");
-const path = require("path");
 const fs = require("fs");
 
 const outDir = "dist";
-const srcDir = "src";
 
-// Ensure the output directory exists
-if (!fs.existsSync(outDir)) {
-  fs.mkdirSync(outDir);
-}
+// Ensure output directory exists
+fs.mkdirSync(outDir, { recursive: true });
 
-// Copy static files (manifest, popup.html, styles) from `src/`
-const staticFiles = ["manifest.json", "popup.html", "styles.css"];
-
-staticFiles.forEach(file => {
-  const srcPath = path.join(srcDir, file);
-  const destPath = path.join(outDir, file);
-
-  if (fs.existsSync(srcPath)) {
-    fs.copyFileSync(srcPath, destPath);
-  } else {
-    console.warn(`Warning: ${file} not found in ${srcDir}`);
-  }
+// Copy static files
+["popup.html", "styles.css"].forEach(file => {
+  fs.copyFileSync(`src/${file}`, `${outDir}/${file}`);
 });
+
+// Copy manifest.json from root
+fs.copyFileSync("manifest.json", `${outDir}/manifest.json`);
 
 // Build TypeScript files
 esbuild.build({
